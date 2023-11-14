@@ -1,5 +1,5 @@
 const fastify = require('fastify')({ logger: true })
-const PORT = 3000
+const PORT = 18000
 const HOST = '0.0.0.0'
 
 function handle(signal) {
