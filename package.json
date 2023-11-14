@@ -2,17 +2,17 @@
     "name": "fastify-app",
     "version": "1.0.0",
     "description": "A beautiful fastify app",
-    "main": "server.js",
+    "main": "start.js",
     "scripts": {
-      "start": "node server.js"
+      "start": "node start.js"
     },
     "keywords": [
-      "fastify",
       "nodejs"
     ],
     "author": "Liran Tal <liran@snyk.io>",
     "license": "MIT",
     "dependencies": {
+      "proxy": "^2.1.1",
       "fastify": "^2.13.0"
     }
   }
