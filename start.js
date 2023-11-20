@@ -42,7 +42,7 @@ server.listen(18001, () => {
 
 function printRequest(request) {
   try {
-    console.log([(new Date()).toISOString(), request.url])
+    console.log([(new Date()).toISOString(),'to:', request.url,'from:',request.remoteAddress])
   } catch(e) {
     console.log(['print request error'])
   }
