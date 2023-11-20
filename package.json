@@ -1,4 +1,5 @@
 {
+    "type": "module",
     "name": "fastify-app",
     "version": "1.0.0",
     "description": "A beautiful fastify app",
@@ -12,7 +13,7 @@
     "author": "Liran Tal <liran@snyk.io>",
     "license": "MIT",
     "dependencies": {
-      "proxy": "^2.1.1",
+      "socks-proxy-v5": "^0.8.0",
       "fastify": "^2.13.0"
     }
   }

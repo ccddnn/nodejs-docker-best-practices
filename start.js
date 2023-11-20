@@ -1,7 +1,18 @@
-var http = require('http');
-var proxy = require('proxy');
+// const { createServer } = require("socks-proxy-v5");
+import { createServer } from "socks-proxy-v5";
 
-const server = proxy.createProxy(http.createServer());
+const server = createServer({
+  authenticate(login, password) {
+    if (login !== "hello" || password !== "thankyou") {
+      console.log(["authentication failed", login]);
+      return false;
+      // authentication failed
+    }
+    console.log([`user ${login} connect`]);
+    // return successful authentication
+    return true;
+  }
+});
 
 server.on('connect', (req, socket, head) => {
   printRequest(req)
@@ -9,10 +20,13 @@ server.on('connect', (req, socket, head) => {
 server.on('request', (req) => {
   printRequest(req)
 })
+server.on('error', (req) => {
+  console.log(['error...'])
+  printRequest(req)
+})
 /* 
 server.on('connection', () => console.log(['connection...']))
 server.on('close', () => console.log(['close...']))
-server.on('error', () => console.log(['error...']))
 server.on('listening', () => console.log(['listening...']))
 server.on('checkContinue', () => console.log(['checkContinue...']))
 server.on('checkExpectation', () => console.log(['checkExpectation...']))
@@ -21,9 +35,9 @@ server.on('dropRequest', () => console.log(['dropRequest...']))
 server.on('upgrade', () => console.log(['upgrade...']))
  */
 
-server.listen(18000, () => {
+server.listen(18001, () => {
   var port = server.address().port;
-  console.log('HTTP(s) proxy server listening on port %d', port);
+  console.log('Socks5 proxy server listening on port %d', port);
 });
 
 function printRequest(request) {
